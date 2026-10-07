@@ -12,27 +12,22 @@ First, install aider:
 
 {% include install.md %}
 
-Install Rapid-MLX and start serving a model (it listens on `http://localhost:8000`):
+On an Apple Silicon Mac, install Rapid-MLX and start serving a model on port 8000:
 
 ```bash
 # Install with Homebrew (or: pip install rapid-mlx)
 brew install rapid-mlx
 
 # Serve a model
-rapid-mlx serve qwen3.5-9b-4bit
+rapid-mlx serve qwen3.5-4b-4bit --port 8000
 ```
 
 Then point aider at its OpenAI-compatible endpoint:
 
 ```bash
-# Mac/Linux:
 export OPENAI_API_BASE=http://localhost:8000/v1
-export OPENAI_API_KEY=rapid-mlx # any placeholder; the local server doesn't authenticate
+export OPENAI_API_KEY=rapid-mlx # placeholder; local authentication is off by default
 
-# Windows:
-setx OPENAI_API_BASE http://localhost:8000/v1
-setx OPENAI_API_KEY rapid-mlx
-# ... restart shell after setx commands
 ```
 
 ```bash
@@ -40,7 +35,7 @@ setx OPENAI_API_KEY rapid-mlx
 cd /to/your/project
 
 # Prefix the model name with openai/
-aider --model openai/qwen3.5-9b-4bit
+aider --model openai/qwen3.5-4b-4bit
 ```
 
 Browse the available models by your Mac's RAM at
